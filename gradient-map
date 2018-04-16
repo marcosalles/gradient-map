@@ -1,0 +1,13 @@
+#!/bin/bash
+
+convert \( -size 1x1 xc:white xc:black +append \) -filter cubic -resize 256x1! .gradline.png
+
+convert input.jpg -colorspace gray .input.jpg
+
+convert .input.jpg .gradline.png -clut output.jpg
+
+#convert .input.jpg -alpha on -channel a -evaluate set 75% .input.png
+
+#convert input.jpg .input.png -gravity center -composite -format jpg -quality 90 output.jpg
+
+rm .gradline.png .input.jpg .input.png
